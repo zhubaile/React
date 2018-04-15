@@ -1,0 +1,25 @@
+rbrush init （下载一个项目文件）
+rbrush connect (启动项目)
+rbrush release （打包项目）
+npm install -g lenz-react-brush  //更新文件
+reactTool connect（用来把es6语法翻译成浏览器认识的命令）
+http://localhost:8891/ngba/login.html
+https://www.npmjs.com/package/lenz-react-brush（一个网址）
+http://cdn.npm.taobao.org/dist/node/v8.9.3/node-v8.9.3-x64.msi(下载的node网址)
+
+语法：
+1： 标签必须用一个大的标签包裹；比如div；
+2： 标签必须封闭 例如：<div></div>;<input />;
+3： class需要写成className，for写成htmlfor；
+4： html注释不能用，js注释可以使用；
+5： 
+
+https://segmentfault.com/q/1010000004125560?_ea=499103
+https://www.cnblogs.com/zxyun/p/5855699.html
+https://blog.csdn.net/jiangbo_phd/article/details/53503120
+需要webstrom 设置下（用来支持es6语法）
+
+this.state  (改变)
+this.props （只能读取）
+this.props.children（读取到所有子点)  React.Children.map（）这是个遍历子节点的方法
+PropTypes属性，就是用来验证组件实例的属性是否符合要求

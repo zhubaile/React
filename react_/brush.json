@@ -1,0 +1,33 @@
+{
+    "name": "test",
+    "brushTcl": "local",
+    "releasePath": "./ngba/",
+    "baseUrl":"/ngba/",
+    "devserver": {
+        "port": 8891,        
+        "dataDir": "./data/",
+        "mockConfig": "./mockConfig.json"
+    },
+    "apps": {
+        "login": {
+            "basePath": "./src/apps/login/",
+            "js": "index.js",
+            "css": "./css/index.css",
+            "html": "index.html",
+            "vendor": {
+                "js": "base",
+                "css": "common"
+            }
+        }
+    },
+    "vendors": {
+        "js": {
+            "base": ["react"]
+        },
+        "css": {
+            "common": [
+                "./src/assets/css/rest.css"
+            ]
+        }
+    }
+}

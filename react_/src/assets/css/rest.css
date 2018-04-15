@@ -1,0 +1,776 @@
+@charset "utf-8";
+/*
+ *base Css
+ *作者：张利召/
+*/
+/*（必需）*/
+/*---------重置和全局使用的基本定义---------*/
+/*---------重置---------*/
+html{font-size: 100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;	*overflow:auto;_overflow-x:hidden;}
+*{box-sizing: content-box}
+body{margin:0;}
+p,ul,ol,form,dl,h1,h2,h3,h4,h5,h6{ margin-top:0; margin-bottom:0;}
+dl,dd{ margin-left:0;}
+ul,ol{padding-left:0;*margin-left:0;list-style-type: none;}
+ul li{*zoom:1;*vertical-align:bottom;}
+em,var,cite,i{font-style:normal;}
+small{font-size:inherit;}
+s,a{text-decoration:none;}
+:focus{outline:none;}/*IE6-7解决焦点点状线去除*/
+blockquote,q{quotes:none; margin:0;}
+table{border-collapse:collapse;border-spacing:0;empty-cells:show;/*table-layout:fixed;*/}
+img,iframe{border:none;}
+img{vertical-align: top;-ms-interpolation-mode: bicubic;/*ie7防止图片缩小失真的*/}
+/*表单*/
+textarea,select,button,.tinput,.submit,.button{margin: 0;vertical-align: middle;outline:0;background:transparent;resize:none;}
+textarea{overflow: auto; vertical-align: top;word-break: break-all;word-wrap:break-word;}
+input[type='checkbox'],input[type='radio']{ vertical-align:-2px;*vertical-align:middle;}
+label,button,.button,.submit,.reset{ cursor:pointer;}
+button,input{*overflow: visible; line-height: normal; }/*修正IE67的input宽度bug*/
+select{height:22px; line-height:18px; padding:2px 0}/*select 全兼容模式*/
+input[type=text],input[type=password]{ margin-top:0; margin-bottom:0; margin-left:0;vertical-align:-2px;*vertical-align:middle}
+input[type=text],input[type=password]{ height: 16px;line-height: 16px;border: 1px solid #ddd;}/*input 全兼容模式 通过padding改变高*/
+input[type=submit],input[type=reset],input[type=button],button[type=button],button[type=submit]{ filter:chroma(color=#000000);}/*清除button按钮在IE6/IE7下的黑边*/
+
+/*---------通用样式---------*/
+.clearfix:before, .clearfix:after,.row:before, .row:after,.ui-row:before, .ui-row:after,.ui-group:before, .ui-group:after{ content:""; display:table; line-height:0; }
+.clearfix:after,.row:after,.ui-row:after,.ui-group:after{ clear:both; }
+.clearfix,.row,.ui-row,.ui-group{ *zoom:1; }
+
+.hide{display:none}[hidden]{display: none}
+.hidden{display:none!important;visibility:hidden!important}
+.f-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}
+.show{display:block}
+.invisible{visibility:hidden}
+
+/*clearfix 清除浮动*/
+.icon{ display:inline-block; *display:inline; *zoom:1; line-height:normal; vertical-align:middle; font-size:0; background-repeat:no-repeat; }
+.pull-l{float:left;_display:inline}
+.pull-r{float:right;_display:inline}
+.no-float{float:none !important}
+.h1, h2, h3, h4, h5, h6{ font-weight:500; line-height:1.1; color:inherit }
+.h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small{ font-weight:normal; line-height:1; color:#999 }
+.h1, h2, h3{ margin-top:20px; margin-bottom:10px }
+.h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small{ font-size:65% }
+.h4, h5, h6{ margin-top:10px; margin-bottom:10px }
+.h4 small, h5 small, h6 small, h4 .small, h5 .small, h6 .small{ font-size:75% }
+.h1{ font-size:36px }
+.h2{ font-size:30px }
+.h3{ font-size:24px }
+.h4{ font-size:18px }
+.h5{ font-size:14px }
+.h6{ font-size:12px }
+.text-l{ text-align:left }/*水平居左*/
+.text-r{ text-align:right !important}/*水平居中*/
+.text-c{ text-align:center !important}/*水平居右*/
+.va-t{ vertical-align:top !important }/*上下居顶*/
+.va-m{ vertical-align:middle !important }/*上下居中*/
+.va-b{ vertical-align:bottom !important }/*上下居底*/
+.pos-r{ position:relative }
+.pos-a{ position:absolute }
+.pos-f{ position:fixed }
+.m-0{margin: 0 !important}/*margin 0像素*/
+.mt-0{ margin-top:0 !important}/*距上0像素*/
+.mt-5{ margin-top:5px }/*距上5像素*/
+.mt-10{ margin-top:10px }/*距上10像素*/
+.mt-15{ margin-top:15px }/*距上15像素*/
+.mt-20{ margin-top:20px }/*距上20像素*/
+.mb-0{ margin-bottom:0 !important}/*距下0像素*/
+.mb-5{ margin-bottom:5px }/*距下5像素*/
+.mb-10{ margin-bottom:10px }/*距下10像素*/
+.mb-15{ margin-bottom:15px }/*距下15像素*/
+.mb-20{ margin-bottom:20px }/*距下20像素*/
+.ml-0{ margin-left:0 !important}/*距左0像素*/
+.ml-5{ margin-left:5px }/*距左5像素*/
+.ml-10{ margin-left:10px }/*距左10像素*/
+.ml-15{ margin-left:15px }/*距左15像素*/
+.ml-20{ margin-left:20px }/*距左20像素*/
+.mr-0{ margin-right:0 !important}/*距右0素*/
+.mr-5{ margin-right:5px }/*距右5像素*/
+.mr-10{ margin-right:10px }/*距右10像素*/
+.mr-15{ margin-right:15px }/*距右15像素*/
+.mr-20{ margin-right:20px }/*距右20像素*/
+
+.p-0{padding: 0 !important}/*padding 0像素*/
+.pt-0{ padding-top:0 !important}/*上填充0像素*/
+.pt-5{ padding-top:5px }/*上填充5像素*/
+.pt-10{ padding-top:10px }/*上填充10像素*/
+.pt-15{ padding-top:15px }/*上填充15像素*/
+.pt-20{ padding-top:20px }/*上填充20像素*/
+.pb-0{ padding-bottom:0 !important}/*下填充0像素*/
+.pb-5{ padding-bottom:5px }/*下填充5像素*/
+.pb-10{ padding-bottom:10px }/*下填充10像素*/
+.pb-15{ padding-bottom:15px }/*下填充15像素*/
+.pb-20{ padding-bottom:20px }/*下填充20像素*/
+.pl-0{ padding-left:0 !important}/*左填充0像素*/
+.pl-5{ padding-left:5px }/*左填充5像素*/
+.pl-10{ padding-left:10px }/*左填充10像素*/
+.pl-15{ padding-left:15px }/*左填充15像素*/
+.pl-20{ padding-left:20px }/*左填充20像素*/
+.pr-0{ padding-right:0 !important}/*右填充0像素*/
+.pr-5{ padding-right:5px }/*右填充5像素*/
+.pr-10{ padding-right:10px }/*右填充10像素*/
+.pr-15{ padding-right:15px }/*右填充15像素*/
+.pr-20{ padding-right:20px }/*右填充20像素*/
+.pr-30{ padding-right:30px }/*右填充30像素*/
+.pd-0{ padding:0 !important}/*填充0像素*/
+.pd-5{ padding:5px }/*填充5像素*/
+.pd-10{ padding:10px }/*填充10像素*/
+.pd-15{ padding:15px }/*填充15像素*/
+.pd-20{ padding:20px }/*填充20像素*/
+.pd-30{ padding:30px }/*填充20像素*/
+.border-bottom{border-bottom:1px solid #ddd;}
+.border-top{border-top:1px solid #ddd;}
+.border-left{border-left:1px solid #ddd;}
+.border-right{border-right:1px solid #ddd;}
+.no-border{border-width:0 !important}
+.no-border-bottom{border-bottom-width:0 !important}
+.no-border-top{border-top-width:0 !important}
+.no-border-left{border-left-width:0 !important}
+.no-border-right{border-right-width:0 !important}
+.no-radius{border-radius:0 !important}
+.no-text-shadow{text-shadow:none !important}
+.bk-gray{ border:solid 1px #ddd }
+.radius{ -khtml-border-radius:4px; -ms-border-radius:4px; -o-border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px }
+.box-shadow{ background-color:#fff; border:solid 1px #ddd; box-shadow:1px 1px 2px 2px #ddd; -webkit-box-shadow:1px 1px 2px 2px #ddd; -moz-box-shadow:1px 1px 2px 2px #ddd }
+.text-shadow{ text-shadow:1px 1px 2px 2px #ddd; -webkit-text-shadow:1px 1px 2px 2px #ddd; -moz-text-shadow:1px 1px 2px 2px #ddd }
+.pipe{ margin:0 5px; color:#CCC }/*行内分割竖线*/
+.dot{color: #666;font-family: "\5B8B\4F53";}/*圆点 ·*/
+.f-12{ font-size:12px !important}/*默认字号12像素，常用于正文*/
+.f-14{ font-size:14px !important}/*14像素*/
+.f-16{ font-size:16px !important}/*16像素*/
+.f-18{ font-size:18px !important}/*18像素*/
+.f-20{ font-size:20px !important}/*20像素*/
+/*文字行距*/
+.l16{ line-height:16px }/*16像素行距*/
+.l18{ line-height:18px }/*18像素行距*/
+.l20{ line-height:20px }/*20像素行距*/
+.l22{ line-height:22px }/*22像素行距*/
+.l24{ line-height:24px }/*24像素行距*/
+.l26{ line-height:26px }/*26像素行距*/
+.l28{ line-height:28px }/*28像素行距*/
+.l30{ line-height:30px }/*30像素行距*/
+.lighter{font-weight:lighter}/*字体轻*/
+.bolder{font-weight:bolder}/*字体加粗*/
+.inline{display:inline-block !important;*display:inline;*zoom:1}
+.block{display:block !important}
+
+.c-red, .c-red a{ color:red !important}/*红色*/
+.c-green, .c-green a{ color:green !important}/*绿色*/
+.c-blue, .c-blue a{ color:blue !important}/*蓝色*/
+.c-white, .c-white a{ color:white !important}/*白色*/
+.c-black, .c-black a{ color:black !important}/*黑色*/
+.c-gray, .c-gray a{ color:gray !important}/*灰色*/
+.c-999, .c-999 a{ color:#999 !important}/*浅灰色*/
+.c-666, .c-666 a{ color:#666 !important}/*浅灰色*/
+.c-333, .c-333 a{ color:#333 !important}/*浅灰色*/
+.c-ddd, .c-ddd a{ color:#ddd !important}/*浅灰色*/
+.c-orange, .c-orange a{ color:orange !important}/*橙色*/
+.c-c9161d,.c-c9161d a{color: #c9161d !important}/*浅红色*/
+.c-f7a726,.c-f7a726a a{color: #f7a726 !important}/*黄色*/
+.c-af874d,.c-af874d a{color:#af874d !important}
+
+.text-overflow{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap }/*文本溢出省略号*/
+.text-break{ word-break: break-all;word-wrap:break-word; }/*单词内断句*/
+.text-underline{text-decoration:underline}/*下划线*/
+.text-through{text-decoration: line-through;}/*中间删除线*/
+a.text-a-underline:hover{text-decoration:underline}/*鼠标hover 下划线*/
+
+.text-muted{ color:#999 }
+a.text-muted:hover{ color:#808080 }
+.text-primary{ color:#F33E6F }
+a.text-primary:hover{ color:#e43 }
+.text-warning{ color:#f33 }
+a.text-warning:hover{ color:#f03 }
+.text-error{ color:#f33 }
+a.text-error:hover{ color:#f03 }
+.text-danger{ color:#c00 }
+a.text-danger:hover{ color:#900 }
+.text-success{ color:#0c0 }
+a.text-success:hover{ color:#093 }
+.text-info{ color:#1faef2 }
+a.text-info:hover{ color:#06c }
+.content{ position:relative; font-size:14px; line-height:25px; overflow:hidden; text-align:left }
+.content h3{ margin-top:20px; font-size:16px }
+.content p{ text-indent:2em; margin-top:20px }
+.content ul{ text-indent:2em }
+/*arrow 三角箭头*/
+.arrow-t,.arrow-r,.arrow-b,.arrow-l{width:0;height:0;border-style: solid;display:inline-block;*display:inline; *zoom:1;}
+.arrow-t{border-color: #666666 transparent;border-bottom-color: inherit;border-width:0 5px 5px 5px;}
+.arrow-r{border-color: transparent #666666 ;border-left-color: inherit;border-width: 5px 0 5px 5px}
+.arrow-b{border-color: #666666 transparent;border-top-color: inherit;border-width: 5px 5px 0 5px}
+.arrow-l{border-color: transparent #666666 ;border-right-color: inherit;border-width: 5px 5px 5px 0}
+/*排行榜*/
+.top-list li{ height:20px; line-height:20px; margin-bottom:15px; overflow:hidden; padding-left:30px; position:relative; text-overflow:ellipsis; vertical-align:bottom; white-space:nowrap; }
+.top-list em{ background-color:#F8F8F8; border:1px solid #EBEBEB; color:#333; height:18px; left:0; line-height:18px; position:absolute; text-align:center; top:0; width:20px; font-style:normal }
+.top-list .top em{ background-color:#390; border:none; color:#fff; height:20px; line-height:20px; width:22px }
+.top-list .date{ color:#999; font-size:12px; position:absolute; right:0; top:0; }
+/*默认table*/
+.table{ width:100%; empty-cells:show; background-color:transparent; border-collapse:collapse; border-spacing:0 }
+.table th{ text-align:left; font-weight:normal }
+/*带水平线*/
+.table th{ font-weight:bold }
+.table th, .table td{ padding:8px; line-height:20px; vertical-align:top; }
+.table td{ text-align:left; }
+.table tbody tr.success  td{ background-color:#dff0d8 }
+.table tbody tr.error  td{ background-color:#f2dede }
+.table tbody tr.warning  td{ background-color:#fcf8e3 }
+.table tbody tr.info  td{ background-color:#d9edf7 }
+.table tbody + tbody{ border-top:2px solid #ddd }
+.table .table{ background-color:#fff }
+/*带横向分割线*/
+.table-border{ border-top:1px solid #ddd }
+.table-border th, .table-border td{ border-bottom:1px solid #ddd }
+/*th带背景*/
+.table-bg thead th{ background-color:#F5FAFE; }
+/*带外边框*/
+.table-bordered{ border:1px solid #ddd; border-collapse:separate; *border-collapse:collapse; border-left:0; }
+.table-bordered th, .table-bordered td{ border-left:1px solid #ddd }
+.table-border.table-bordered{ border-bottom:0; }
+/*奇数行背景设为浅灰色，IE低版本不支持*/
+.table-striped tbody > tr:nth-child(odd) > td, .table-striped tbody > tr:nth-child(odd) > th{ background-color:#f9f9f9 }
+/*竖直方向padding缩减一半*/
+.table-condensed th, .table-condensed td{ padding:4px 5px }
+/*鼠标悬停样式*/
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{ background-color:#f5f5f5 }
+/*定义颜色*/
+/*悬停在行*/
+.table tbody tr.active, .table tbody tr.active > td, .table tbody tr.active > th, .table tbody tr .active{ background-color:#F5F5F5 !important }
+/*成功或积极*/
+.table tbody tr.success, .table tbody tr.success > td, .table tbody tr.success > th, .table tbody tr .success{ background-color:#DFF0D8 !important }
+/*警告或出错*/
+.table tbody tr.warning, .table tbody tr.warning > td, .table tbody tr.warning > th, .table tbody tr .warning{ background-color:#FCF8E3 !important }
+/*危险*/
+.table tbody tr.danger, .table tbody tr.danger > td, .table tbody tr.danger > th, .table tbody tr .danger{ background-color:#F2DEDE !important }
+/*表格文字对齐方式，默认是居左对齐*/
+.table .text-c th, .table .text-c td{ text-align:center }/*整行居中*/
+.table .text-r th, .table .text-r td{ text-align:right }/*整行居右*/
+.table th.text-l, .table td.text-l{ text-align:left !important }/*单独列居左*/
+.table th.text-c, .table td.text-c{ text-align:center !important }/*单独列居中*/
+.table th.text-r, .table td.text-r{ text-align:right !important }/*单独列居右*/
+/*btn*/
+.btn{ display:inline-block; padding:0 12px; cursor:pointer;height:30px;line-height:28px; font-size:14px; text-align:center; white-space:nowrap; vertical-align:middle; border:1px solid #ccc;  *zoom:1;
+    /*CSS3阴影*/
+    -webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+    *margin-right:8px;
+
+}
+.btn:focus{ outline:thin dotted; outline:5px auto -webkit-focus-ring-color; outline-offset:-2px; }
+.btn:hover, .btn:focus, .btn:active, .btn.active, .btn.disabled, .btn[disabled]{ text-decoration:none; }
+.a.btn:hover{ text-decoration:none; }
+.btn:active, .btn.active{ background-color:#ccc \9 }
+.btn:first-child{ *margin-left:0 }
+.btn:hover, .btn:focus{ background-position:0 -15px; -webkit-transition:background-position .1s linear; -moz-transition:background-position .1s linear; -o-transition:background-position .1s linear; transition:background-position .1s linear }
+.btn:focus{ outline:thin dotted #333; outline:5px auto -webkit-focus-ring-color; outline-offset:-2px }
+.btn.active, .btn:active{ background-image:none; outline:0; -webkit-box-shadow:inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow:inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05); box-shadow:inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) }
+.btn-primary.active, .btn-warning.active, .btn-danger.active, .btn-success.active, .btn-info.active, .btn-inverse.active{ color:rgba(255, 255, 255, 0.75) }
+.a.btn-primary:hover, a.btn-warning:hover, a.btn-danger:hover, a.btn-success:hover, a.btn-info:hover, a.btn-inverse:hover{ color:#fff }
+
+/*默认 btn*/
+.btn-default,a.btn-default{
+    background-color:#e6e6e6;
+    /*CSS3 线性渐变背景*/
+    background-image:-moz-linear-gradient(top, #fff, #e6e6e6);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+    background-image:-webkit-linear-gradient(top, #fff, #e6e6e6);
+    background-image:-o-linear-gradient(top, #fff, #e6e6e6);
+    background-image:linear-gradient(to bottom, #fff, #e6e6e6);
+    background-repeat:repeat-x;
+    border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffff', endColorstr='#ffe6e6e6', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{ color:#333; background-color:#e6e6e6; }
+a.btn-default{color: #666;}
+a.btn-default:hover{ color:#333 }
+/*主要*/
+.btn-primary{ color:#fff; text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25); background-color:#04c;
+    background-image:-moz-linear-gradient(top, #08c, #04c);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#08c), to(#04c));
+    background-image:-webkit-linear-gradient(top, #08c, #04c);
+    background-image:-o-linear-gradient(top, #08c, #04c);
+    background-image:linear-gradient(to bottom, #08c, #04c);
+    background-repeat:repeat-x;
+    border-color:#04c #04c #002a80; border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false) }
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled]{ color:#fff; background-color:#04c; *background-color:#003bb3 }
+.btn-primary:active, .btn-primary.active{ background-color:#039 \9 }
+/*信息*/
+.btn-info{ color:#fff; text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25); background-color:#2f96b4;
+    background-image:-moz-linear-gradient(top, #5bc0de, #2f96b4);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+    background-image:-webkit-linear-gradient(top, #5bc0de, #2f96b4);
+    background-image:-o-linear-gradient(top, #5bc0de, #2f96b4);
+    background-image:linear-gradient(to bottom, #5bc0de, #2f96b4);
+    background-repeat:repeat-x; border-color:#2f96b4 #2f96b4 #1f6377;
+    border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false) }
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled]{ color:#fff; background-color:#2f96b4; *background-color:#2a85a0 }
+.btn-info:active, .btn-info.active{ background-color:#24748c \9 }
+/*成功*/
+.btn-success{ color:#fff; text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25); background-color:#51a351;
+    background-image:-moz-linear-gradient(top, #62c462, #51a351);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+    background-image:-webkit-linear-gradient(top, #62c462, #51a351);
+    background-image:-o-linear-gradient(top, #62c462, #51a351);
+    background-image:linear-gradient(to bottom, #62c462, #51a351);
+    background-repeat:repeat-x; border-color:#51a351 #51a351 #387038;
+    border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false) }
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled]{ color:#fff; background-color:#51a351; *background-color:#499249 }
+.btn-success:active, .btn-success.active{ background-color:#408140 \9 }
+/*警告*/
+.btn-warning{ color:#fff; text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25); background-color:#f89406;
+    background-image:-moz-linear-gradient(top, #fbb450, #f89406);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+    background-image:-webkit-linear-gradient(top, #fbb450, #f89406);
+    background-image:-o-linear-gradient(top, #fbb450, #f89406);
+    background-image:linear-gradient(to bottom, #fbb450, #f89406);
+    background-repeat:repeat-x; border-color:#f89406 #f89406 #ad6704;
+    border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false) }
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .btn-warning.disabled, .btn-warning[disabled]{ color:#fff; background-color:#f89406; *background-color:#df8505 }
+.btn-warning:active, .btn-warning.active{ background-color:#c67605 \9 }
+/*危险*/
+.btn-danger{ color:#fff; text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25); background-color:#bd362f;
+    background-image:-moz-linear-gradient(top, #ee5f5b, #bd362f);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+    background-image:-webkit-linear-gradient(top, #ee5f5b, #bd362f);
+    background-image:-o-linear-gradient(top, #ee5f5b, #bd362f);
+    background-image:linear-gradient(to bottom, #ee5f5b, #bd362f);
+    background-repeat:repeat-x; border-color:#bd362f #bd362f #802420;
+    border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false) }
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .btn-danger.disabled, .btn-danger[disabled]{ color:#fff; background-color:#bd362f; *background-color:#a9302a }
+.btn-danger:active, .btn-danger.active{ background-color:#942a25 \9 }
+/*相反*/
+.btn-inverse{ color:#fff; text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25); background-color:#222;
+    background-image:-moz-linear-gradient(top, #444, #222);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#222));
+    background-image:-webkit-linear-gradient(top, #444, #222);
+    background-image:-o-linear-gradient(top, #444, #222);
+    background-image:linear-gradient(to bottom, #444, #222);
+    background-repeat:repeat-x; border-color:#222 #222 #000;
+    border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled=false) }
+.btn-inverse:hover, .btn-inverse:focus, .btn-inverse:active, .btn-inverse.active, .btn-inverse.disabled, .btn-inverse[disabled]{ color:#fff; background-color:#222; *background-color:#151515 }
+.btn-inverse:active, .btn-inverse.active{ background-color:#080808 \9 }
+/*链接*/
+.btn-link, .btn-link:active, .btn-link[disabled]{ background-color:transparent; background-image:none; -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none }
+.btn-link{ color:#08c; cursor:pointer; border-color:transparent; -webkit-border-radius:0; -moz-border-radius:0; border-radius:0 }
+.btn-link:hover, .btn-link:focus{ color:#005580; text-decoration:underline; background-color:transparent }
+.btn-link[disabled]:hover, .btn-link[disabled]:focus{ color:#333; text-decoration:none }
+/*按钮尺寸*/
+.btn-large{ padding:0 30px; font-size:12px;line-height: 45px; height: 45px;}
+.btn-bigger{padding:0 20px; font-size:12px;line-height: 36px; height: 36px;}
+.btn-big{ padding:0 15px; font-size:12px; line-height: 30px;height:30px;}
+.btn-smaller{ padding:0 10px; font-size:12px; line-height: 23px;height: 23px;}
+.btn-small{ padding:0 10px; font-size:12px; line-height: 20px;height: 20px;}
+.btn-mini{ padding:0 6px; font-size:10px; line-height: 14px;height: 14px;}
+/*块级按钮*/
+.btn-block{ -moz-box-sizing:border-box; display:block; padding-left:0; padding-right:0; width:100%; }
+/*按钮尺寸*/
+/*.btn-large{ padding:10px 20px; font-size:18px; }
+.btn-big{ padding:5px 15px; font-size:16px; }
+.btn-small{ padding:2px 10px; font-size:12px; }
+.btn-mini{ padding:0 6px; font-size:10px; }*/
+/*禁用状态*/
+.disabled{ cursor:default; background-image:none; opacity:.65; filter:alpha(opacity=65); -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none }
+
+/*标签与标号
+	Name:			style_label
+	Example:		<span class="label label-success/label-warning/label-important/label-info/label-inverse">默认</span>
+	Explain:		.label 默认/.label-success 成功/.label-warning 错误/.lable-warning 危险/.label-important 重要/.label-info 信息/.label-inverse 相反
+
+	Name:			style_badge
+	Example:		<span class="badge badge-success/badge-warning/badge-important/badge-info/badge-inverse">1</span>
+	Explain:		.label 默认/.badge-success 成功/.badge-warning 错误/.badge-warning 危险/.badge-important 重要/.badge-info 信息/.badge-inverse 相反
+
+*/
+.label, .badge{display: inline-block;padding: 2px 4px;font-size: 11.844px;font-weight: 400;line-height: 14px;color: #fff;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);white-space: nowrap;vertical-align: baseline;background-color: #999}
+.label{border-radius: 3px}
+.badge{padding-right: 9px;padding-left: 9px;border-radius: 9px}
+.label:empty, .badge:empty{display: none}
+a.label:hover, a.label:focus, a.badge:hover, a.badge:focus{color: #fff;text-decoration: none;cursor: pointer}
+
+/*成功*/
+.label-success, .badge-success{background-color: #0c0}
+.label-success[href], .badge-success[href]{background-color: #0c0}
+/* 主要*/
+.label-primary, .badge-primary{background-color: #428bca}
+.label-primary[href], .badge-primary[href]{background-color: #428bca}
+/*错误*/
+.label-warning, .badge-warning{background-color: #f0ad4e}
+.label-warning[href], .badge-warning[href]{background-color: #f0ad4e}
+/*危险*/
+.label-danger, .badge-danger{background-color: #d9534f}
+.label-danger[href], .badge-danger[href]{background-color: #d9534f}
+/*重要*/
+.label-important, .badge-important{background-color: #b94a48}
+.label-important[href], .badge-important[href]{background-color: #b94a48}
+/*金额*/
+.label-price, .badge-price{background-color: #f60}
+.label-price[href], .badge-price[href]{background-color: #f60}
+/*信息*/
+.label-info, .badge-info{background-color: #1faef2}
+.label-info[href], .badge-info[href]{background-color: #1faef2}
+/*相反*/
+.label-inverse, .badge-inverse{background-color: #1a1a1a}
+.label-inverse[href], .badge-inverse[href]{background-color: #1a1a1a}
+/*尺寸*/
+.btn .label, .btn .badge{position: relative;top: -1px}
+.btn-mini .label, .btn-mini .badge{top: 0}
+/*单选按钮，复选框
+	Example:
+	<label class="radio-box" for="radio-demo-1"><span class="radio-icon"><input type="radio" id="radio-demo-1" value="1" name="radio-demo"></span> 单选按钮</label>
+	<label class="radio-box" for="radio-demo-2"><span class="radio-icon"><input type="radio" id="radio-demo-2" value="2" name="radio-demo"></span> 单选按钮</label>
+*/
+input[type="radio"],input[type="checkbox"] {line-height: normal; margin-top:-4px}
+.radio-box.inline,.checkbox.inline {margin-bottom: 0;vertical-align: middle;display: inline!important; text-align:left}
+.radio-box{display:inline-block;cursor:pointer}
+.radio-icon{ display:inline-block; vertical-align:middle; width:16px; height:16px; cursor:pointer;  position:relative; overflow:hidden}
+.radio-icon input{ position:absolute; left:0; top:5px; opacity:0;filter: alpha(opacity=0)}
+.checked .radio-icon{ background-position:0 -16px}
+.radio-text{color: #999;vertical-align: middle;}
+/*默认表单状态*/
+.input-text,.textarea{border:solid 1px #ddd;background-color:#fff;padding:4px;color:#555; width:200px;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition:all 0.2s linear 0s;
+    -moz-transition:all 0.2s linear 0s;
+    -o-transition:all 0.2s linear 0s;
+    transition:all 0.2s linear 0s}
+.textarea{ height:100px;line-height:20px;}/*默认高度，自己可以设置*/
+.input-text:hover,.textarea:hover{ border: solid 1px #b3b3b3}
+/*得到焦点后*/
+.input-text.focus,textarea.focus{border:solid 1px #33aaff \9;border-color:rgba(82,168,236,0.8);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6)}
+/*不可点击*/
+.input-text.disabled,.textarea.disabled,.input-text.disabled.focus,.textarea.disabled.focus{ background-color:#ededed; cursor:default;border-color: #ddd;
+    -webkit-box-shadow:inset 0 2px 2px #e8e7e7;
+    -moz-box-shadow:inset 0 2px 2px #e8e7e7;
+    box-shadow:inset 0 2px 2px #e8e7e7
+}
+/*文本框尺寸*/
+.input-bigger{font-size:12px; padding:15px 5px}
+.input-big{ font-size:12px; padding:10px 5px}/*大*/
+.input-small{ font-size:12px;padding:4px}/*小*/
+.input-mini{font-size:10px;padding:3px}/*迷你*/
+.input-short{width: 140px;}
+.input-long{width: 300px;}
+/*输入框组*/
+.input-group {border-collapse: separate;display: table;position: relative}
+.input-group[class*="col-"] {float: none;padding-left: 0;padding-right: 0}
+.input-group-addon {background-color:#eee;border: 1px solid #ccc;font-size: 14px;font-weight: normal;line-height: 1;padding: 6px 12px; text-align:center; color:#555}
+.input-group-addon input[type="radio"], .input-group-addon input[type="checkbox"] {margin-top: 0}
+.input-group .input-text {margin-bottom: 0;width: 100%}
+/*4.21 遮罩条
+	Name:			mod_maskBar
+*/
+.mask-bar{position:absolute;width:100%; height:auto;left:0; bottom:-60px; right:0;background-color:#000;z-index:2; color:#fff!important;opacity:0.6;filter:alpha(opacity=60)}
+.mask-wraper{position:relative; overflow:hidden}
+.mask-wraper.hover .mask-bar,.mask-wraper:hover .mask-bar{bottom:0px;
+    transition: bottom 200ms;
+    -moz-transition: bottom 200ms; /* Firefox 4 */
+    -webkit-transition: bottom 200ms; /* Safari 和 Chrome */
+    -o-transition: bottom 200ms; /* Opera */
+}
+.mask-box{position:absolute;width:100%; height:100%;top:0;left:0; bottom:0;right:0;z-index:2;background-color:#000; color:#fff!important;opacity:0;filter:alpha(opacity=0)}
+.mask-wraper.hover .mask-box,.mask-wraper:hover .mask-box{opacity:0.2;filter:alpha(opacity=20);
+    transition: opacity 500ms;
+    -moz-transition: opacity 500ms; /* Firefox 4 */
+    -webkit-transition: opacity 500ms; /* Safari 和 Chrome */
+    -o-transition: opacity 500ms; /* Opera */
+}
+/*搜索条
+	Name:			mod_searchBar
+	Sample:
+<div class="searchBar">
+  <form class="form-search" method="post" action="">
+    <input id="searchKeyword" name="searchKeyword" value="请输入搜索关键词" class="searchTxt">
+    <input id="searchBtn" name="searchBtn" type="submit" value="搜索" class="searchBtn" onclick="b_onclick()">
+  </form>
+</div>
+*/
+/*.searchBar{z-index: 100; width:460px;height: 33px;position:relative}
+.form-search{margin-bottom:0px}
+.searchTxt{ float:left;width:350px;height:23px;line-height:23px;font-size:14px;color:#9a9a9a;margin-left:33px;margin-top:5px;border:none;background-color:#fff}
+.searchTxt.focus{ color:#333}
+.searchBtn{ float:right;display:block;border:none;width:73px;height:33px;cursor:pointer;text-indent:-9999px;background:url(../images/search.gif) no-repeat right -81px}
+.searchBtn:hover{ background-position:right -114px}*/
+
+.media, .media-body {overflow: hidden; zoom: 1}
+.media-object { display: block}
+.media  .pull-l { margin-right: 10px}
+.media  .pull-r { margin-left: 10px}
+/*col-offset-3*/
+/*栅格系统*/
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12{
+    float:left;
+    position:relative;
+    min-height:1px;
+    z-index: 0;
+}
+.col-12{width:100%}
+.col-11{width:91.66666667%}
+.col-10{width:83.33333333%}
+.col-9{width:75%}
+.col-8{width:66.66666667%}
+.col-7{ width:58.33333333%}
+.col-6{width:50%}
+.col-5{width:41.66666667%}
+.col-4{width:33.33333333%}
+.col-3{width:25%}
+.col-2{width:16.66666667%}
+.col-1{ width:8.33333333%}
+
+.col-offset-12{margin-left:100%}
+.col-offset-11{margin-left:91.66666667%}
+.col-offset-10{margin-left:83.33333333%}
+.col-offset-9{margin-left:75%}
+.col-offset-8{margin-left:66.66666667%}
+.col-offset-7{ margin-left:58.33333333%}
+.col-offset-6{margin-left:50%}
+.col-offset-5{margin-left:41.66666667%}
+.col-offset-4{margin-left:33.33333333%}
+.col-offset-3{margin-left:25%}
+.col-offset-2{margin-left:16.66666667%}
+.col-offset-1{ margin-left:8.33333333%}
+/*固定栅格系统*/
+/*[class^="span-"],[class*=" span-"] { float:left; margin-top:20px}
+.row-980-20 [class^="span-"],.row-980-20 [class*=" span-"]{margin-right:20px}
+.row-980-20{ margin-right:-20px}
+.row-980-20 .span-1 {width:30px}
+.row-980-20 .span-2 {width:80px}
+.row-980-20 .span-3 {width:130px}
+.row-980-20 .span-4 {width:180px}
+.row-980-20 .span-5 {width:230px}
+.row-980-20 .span-6 {width:280px}
+.row-980-20 .span-7 {width:330px}
+.row-980-20 .span-8 {width:380px}
+.row-980-20 .span-9 {width:430px}
+.row-980-20 .span-10{width:480px}
+.row-980-20 .span-11{width:530px}
+.row-980-20 .span-12{width:580px}
+.row-980-20 .span-13{width:630px}
+.row-980-20 .span-14{width:680px}
+.row-980-20 .span-15{width:730px}
+.row-980-20 .span-16{width:780px}
+.row-980-20 .span-17{width:830px}
+.row-980-20 .span-18{width:880px}
+.row-980-20 .span-19{width:930px}
+.row-980-20 .span-20{width:980px}*/
+/*ui-布局 外部用ui-row包着*/
+.ui-fix-l{position:relative;float:left;width:100px;margin-right:-100px;}
+.ui-fix-r{position:relative;float:right;width:100px;margin-left:-100px;}
+.ui-fluid-warp{float:left;width:100%;}
+.ui-fluid{}/*根据左右width设置margin*/
+.ui-fix-double .ui-fix-l{margin-right:0}
+.ui-fix-double .ui-fix-r{margin-left:0}
+/* 两列右侧自适应布局 */
+/*<div class="ui-row">
+    <div class="ui-fix-l">左侧定宽</div>
+    <div class="ui-fluid-warp">
+        <div style="margin-left:100px;">右侧自适应</div>
+    </div>
+</div>*/
+/* 两列左侧自适应布局 */
+/*<div class="ui-row">
+    <div class="ui-fluid-warp">
+    <div style="margin-right:100px;">左侧自适应</div>
+    </div>
+    <div class="ui-fix-r">右侧定宽</div>
+</div>*/
+/* 三列中间自适应布局 */
+/*<div class="ui-row">
+    <div class="ui-fix-l">左侧定宽</div>
+    <div class="ui-fluid-warp">
+    <div style="margin-right:100px;margin-left:100px;">中间自适应</div>
+    </div>
+    <div class="ui-fix-r">右侧定宽</div>
+</div>*/
+/* 三列左侧自适应布局  有两个ui-fix-*挨着排放时ui-row上加ui-rix-double*/
+/*<div class="ui-row ui-fix-double">
+    <div class="ui-fluid-warp" style="margin-right:-200px;">
+    <div style="margin-right:200px;">左侧自适应</div>
+    </div>
+    <div class="ui-fix-r">右侧定宽</div>
+    <div class="ui-fix-r">右侧定宽</div>
+</div>*/
+/* 三列右侧自适应布局 */
+/*<div class="ui-row ui-fix-double">
+    <div class="ui-fix-l">左侧定宽</div>
+    <div class="ui-fix-l">左侧定宽</div>
+    <div class="ui-fluid-warp" style="margin-left:-200px;">
+    <div style="margin-left:200px;">左侧自适应</div>
+    </div>
+</div>*/
+
+.space{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0
+}
+.space-32{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:32px 0 31px
+}
+.space-30{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:30px 0 29px
+}
+.space-28{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:28px 0 27px
+}
+.space-26{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:26px 0 25px
+}
+.space-24{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:24px 0 23px
+}
+.space-22{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:22px 0 21px
+}
+.space-20{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:20px 0 19px
+}
+.space-18{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:18px 0 17px
+}
+.space-16{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:16px 0 15px
+}
+.space-14{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:14px 0 13px
+}
+.space-12{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:12px 0 11px
+}
+.space-10{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:10px 0 9px
+}
+.space-8{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:8px 0 7px
+}
+.space-6{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:6px 0 5px
+}
+.space-4{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:4px 0 3px
+}
+.space-2{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:2px 0 1px
+}
+.space-0{
+    max-height:1px;
+    min-height:1px;
+    overflow:hidden;
+    margin:12px 0;
+    margin:0
+}
+/* ui-group */
+/*<div class="ui-group">
+    <div class="ui-gl">左侧</div>
+    <div class="ui-gc">中间</div>
+    <div class="ui-gr">右侧</div>
+</div>*/
+.ui-gl,.ui-gc,.ui-gr{float:left;position:relative;}
+/*有边*/
+.ui-group.ui-gb .ui-gl,.ui-group.ui-gb .ui-gr{border:1px solid #ddd;}
+.ui-group.ui-gb .ui-gc{border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
+/*btn group*/
+/*<div class="ui-group ui-g-btn" >
+<a href="" class="ui-btn btn-danger ui-gl">-</a>
+<input type="text" class="ui-gc" />
+<a href="" class="ui-btn btn-danger ui-gr">+</a>
+</div>*/
+.ui-group.ui-g-btn .ui-btn{padding:0 10px;line-height:33px;}
+.ui-group.ui-g-btn input.ui-gc{padding: 8px;width:50px;}
+/*panel*/
+.panel{padding: 0;-webkit-box-shadow: none; box-shadow: none; border:1px solid #ddd;}
+.panel-heading{border-bottom:1px solid #ddd; padding:10px 15px;}
+.panel-title{margin-top:0;margin-bottom:0;font-size:14px;color:inherit}
+.panel-body{padding:10px 15px;}
+.panel-footer{padding:10px 15px;border-top:1px solid #ddd;}
+.panel.no-border,.panel.no-border .panel-heading,.panel.no-border .panel-footer{border:none;}
+.panel.no-padding,.panel.no-padding .panel-heading,.panel.no-padding .panel-footer,.panel.no-padding .panel-body{padding:0;}
+
+/*设置placeholder颜色*/
+::-webkit-input-placeholder {color:#b3b3b3}/* WebKit browsers */
+:-moz-placeholder {color:#b3b3b3}/* Mozilla Firefox 4 to 18 */
+::-moz-placeholder {color:#b3b3b3}/* Mozilla Firefox 19+ */
+:-ms-input-placeholder {color:#b3b3b3}/* Internet Explorer 10+ */
+.placeholder{color:#adb0be; position:absolute; z-index:9}/*不兼容placeholder属性的浏览器，可使用<span class="placeholder">表单默认值</span>*/

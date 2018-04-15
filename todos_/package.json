@@ -1,0 +1,31 @@
+{
+  "name": "lenz-brush",
+  "version": "0.0.1",
+  "description": "typescript project webpack build tools",
+  "main": "src/index.js",
+  "bin": {
+    "tbrush": "./src/index.js"
+  },
+  "scripts": {
+    "test": "test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhanglizhao/lenz-brush.git"
+  },
+  "keywords": [
+    "typescript",
+    "webpack",
+    "bulid tools"
+  ],
+  "author": "zhanglizhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhanglizhao/lenz-brush/issues"
+  },
+  "homepage": "https://github.com/zhanglizhao/lenz-brush#readme",
+  "dependencies": {
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1"
+  }
+}

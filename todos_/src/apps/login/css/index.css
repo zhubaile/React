@@ -1,0 +1,29 @@
+*{ padding: 0; margin: 0; box-sizing: content-box;}
+#all{ width: 500px; margin: 20px auto; position: relative; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2),0 25px 50px 0 rgba(0,0,0,0.1);}
+#all .header{ width: 500px; margin: auto; color: #4d4d4d; overflow: hidden;}
+.header h1{ text-align: center; color: #ead7d7; font-size: 90px;}
+.header .header-todo{width: 450px; height: 50px; padding-left: 50px;font-size: 23px; border: 1px solid #e6e6e6;}
+
+#all .center{ position: relative;width: 500px;z-index: 2;margin-top: -2px;}
+.center input[type="checkbox" ]{  outline: none;  }
+.center .center-all{ position:absolute;left: -5px;top: -40px; width: 60px; height: 30px;text-align: center; border: none; -webkit-appearance: none;}
+.center-all:checked:before{ color: #737373;}
+.center-all:before{ content: '>'; font-size: 22px;color: #e6e6e6; padding: 10px 20px;}
+.center ul li{position: relative; width: 500px; height: 60px; border: 1px solid #e6e6e6;}
+.center ul li input{ position: absolute; top: 17px; left: 10px;width:22px;height:22px;cursor:pointer; color: #4d4d4d; -webkit-appearance: none;}
+/*.center ul li input:checked:before{display: block; color: red;}
+.center ul li input:before{display: none; content: '√';font-size: 22px;}*/
+.center ul li input:after{	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>'); }
+.center ul li input:checked:after{ 	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');}
+.center ul li label{position: absolute; left: 60px; line-height: 65px; font-size: 20px; border: none; margin: 0;}
+.center ul li label.error{color: #737373;text-decoration:line-through;}    /*颜色为灰色，加一道中间的横线*/
+.center ul li .destroy{display: none; cursor: pointer; position: absolute; top: 15px; right: 20px; font-size: 25px; color: #cc9a9a; border: none;}
+.center ul li:hover .destroy{display: block;}
+
+#all .fander{overflow: hidden; width: 500px; height: 50px; margin: auto;border: 1px solid #e6e6e6;}
+.fander .fander-num{width: 25%; height: 40px; float: left; text-align: center; line-height: 40px;}
+.fander .fander-btn{float: left; width: 50%; height: 40px; background: #fff; text-align: center;}
+.fander .fander-btn .fander-btn-box{ width: 250px; height: 25px; margin: 10px auto;}
+.fander .fander-btn .btn{ float: left; margin-left: 5px; border: none; background: #ffffff;}
+.fander .fander-btn .btn:after .bode{border: 1px solid #ecd7d7;}
+.fander .fander-end{float: left; width: 25%; height: 40px;text-align: center; line-height: 40px; cursor: pointer;}
