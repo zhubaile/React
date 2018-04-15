@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 /*
 var app = header || {};
 var ESCAPE_KEY = 27;

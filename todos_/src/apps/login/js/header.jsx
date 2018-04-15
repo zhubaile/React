@@ -1,30 +1,54 @@
 import React, { Component } from "react";
 
-/*ALL_TODOS = 'all';
+/*
+ALL_TODOS = 'all';
 ACTIVE_TODOS = 'active';
 COMPLETED_TODOS = 'completed';
+*/
 
-var ENTER_KEY = 13;*/
 export default class Header extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            nowShowing:"all",
+            editing:null,
+            newTodo:""
+        };
+        this.handleChange=this.handleChange.bind(this);
+        this.handleNewTodoKeyDown=this.handleNewTodoKeyDown.bind(this);
     };
-/*    getInitialState(){
+   /* getInitialState(){
         return{
-            nowShowing: ALL_TODOS,
-            EDITING:null,
+            nowShowing:"all",
+            editing:null,
             newTodo:""
         };
     },
     componentDidMount(){
         var setState = this.setState;
         var router = Router({
-            '/': setState.bind(this, {nowShowing: ALL_TODOS}),
-            '/active': setState.bind(this, {nowShowing: ACTIVE_TODOS}),
-            '/completed': setState.bind(this, {nowShowing: COMPLETED_TODOS})
+            '/': setState.bind(this, {nowShowing: "all"}),
+            '/active': setState.bind(this, {nowShowing: "active"}),
+            '/completed': setState.bind(this, {nowShowing: "completed"})
         });
         router.init('/');
+    },*/
+    handleChange(event){
+        this.setState({newTodo: event.target.value});
     }
+    handleNewTodoKeyDown(event){
+        if (event.keyCode !== 13) {
+            return;
+        }
+        event.preventDefault();
+        var val = this.state.newTodo.trim();
+
+        if (val) {
+            this.props.addTodo(val);
+            this.setState({newTodo: ''});
+        }
+    }
+/*
     handleChange(event){
         this.setState({newTodo: event.target.value});
     }
@@ -64,7 +88,7 @@ export default class Header extends Component {
         this.props.model.clearCompleted();
     }*/
     render() {
-       /* var footer;
+/*        var footer;
         var main;
         var todos = this.props.model.todos;
 
@@ -137,10 +161,10 @@ export default class Header extends Component {
                 </div>
                 <div className="center">
                     <input
-                        className="toggle-all"
+                        className="center-all"
                         type="checkbox"
-                        onChange={this.toggleAll}
-                        checked={activeTodoCount === 0}
+                      /*  onChange={this.toggleAll}
+                        checked={activeTodoCount === 0}*/
                         />
                     <ul>
                         <li>
@@ -165,3 +189,5 @@ export default class Header extends Component {
         )
     };
 };
+
+
