@@ -18,6 +18,16 @@
                 "js": "base",
                 "css": "common"
             }
+        },
+        "testOne": {
+            "basePath": "./src/apps/testOne/",
+            "js": "index.jsx",
+            "css": [],
+            "html": "index.html",
+            "vendor": {
+                "js": "base",
+                "css": "common"
+            }
         }
     },
     "vendors": {
