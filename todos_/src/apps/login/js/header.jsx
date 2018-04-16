@@ -49,21 +49,6 @@ export default class Header extends Component {
         }
     }
 /*
-    handleChange(event){
-        this.setState({newTodo: event.target.value});
-    }
-    handleNewTodoKeyDown(event){
-        if (event.keyCode !== ENTER_KEY) {
-            return;
-    }
-        event.preventDefault();
-        var val = this.state.newTodo.trim();
-
-        if (val) {
-            this.props.addTodo(val);
-            this.setState({newTodo: ''});
-        }
-    }
     toggleAll(event){
         var checked = event.target.checked;
         this.props.model.toggleAll(checked);
@@ -169,7 +154,9 @@ export default class Header extends Component {
                     <ul>
                         <li>
                             <input type="checkbox" className="toggle"/>
-                            <label>好的</label>
+                            <label>
+                            haoba
+                            </label>
                             <button className="destroy">×</button>
                         </li>
                     </ul>
