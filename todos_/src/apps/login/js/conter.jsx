@@ -1,96 +1,32 @@
 import React, { Component } from "react";
 
-/*var app = header || {};
-var ESCAPE_KEY = 27;
-var ENTER_KEY = 13;*/
-export default class Conter extends Component {
+export default class NameForm extends React.Component {
   constructor(props) {
     super(props);
-  };
- /* handleSubmit (event) {
-    var val = this.state.editText.trim();
-    if (val) {
-      this.props.onSave(val);
-      this.setState({editText: val});
-    } else {
-      this.props.onDestroy();
-    }
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleEdit () {
-    this.props.onEdit();
-    this.setState({editText: this.props.todo.title});
+  handleChange(event) {
+    this.setState({value: event.target.value});
   }
 
-  handleKeyDown (event) {
-    if (event.which === ESCAPE_KEY) {
-      this.setState({editText: this.props.todo.title});
-      this.props.onCancel(event);
-    } else if (event.which === ENTER_KEY) {
-      this.handleSubmit(event);
-    }
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
   }
 
-  handleChange (event) {
-    if (this.props.editing) {
-      this.setState({editText: event.target.value});
-    }
-  }
-
-  getInitialState () {
-    return {editText: this.props.todo.title};
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-        nextProps.todo !== this.props.todo ||
-        nextProps.editing !== this.props.editing ||
-        nextState.editText !== this.state.editText
-    );
-  }
-
-  componentDidUpdate(prevProps) {
-    if (!prevProps.editing && this.props.editing) {
-      var node = React.findDOMNode(this.refs.editField);
-      node.focus();
-      node.setSelectionRange(node.value.length, node.value.length);
-    }
-  }*/
   render() {
     return (
-        <div className="conter">
-          <ul>
-            <li>
-              <input type="checkbox" className="toggle"/>
-              <label>好的</label>
-              <button className="destroy">×</button>
-            </li>
-          </ul>
-        </div>
-      /*  <li className={classNames({
-					completed: this.props.todo.completed,
-					editing: this.props.editing
-				})}>
-          <div className="view">
-            <input
-                className="toggle"
-                type="checkbox"
-                checked={this.props.todo.completed}
-                onChange={this.props.onToggle}
-                />
-            <label onDoubleClick={this.handleEdit}>
-              {this.props.todo.title}
-            </label>
-            <button className="destroy" onClick={this.props.onDestroy} />
-          </div>
-          <input
-              ref="editField"
-              className="edit"
-              value={this.state.editText}
-              onBlur={this.handleSubmit}
-              onChange={this.handleChange}
-              onKeyDown={this.handleKeyDown}
-              />
-        </li>*/
-    )
-  };
-};
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}

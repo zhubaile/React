@@ -5,9 +5,9 @@ import { render } from 'react-dom';
 //使用react 只需要定好你的数据，然后模板（render下面的东西）按数据做好逻辑处理就行了。
 
 /**
- * 
+ *
  * 如下面，要实现在输入框中输入内容，点击添加后在id为contenItems下自动加一行输出内容的功能
- * 
+ *
  */
 class Test extends Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class Test extends Component {
          *      <li>a</li>
          *      <li>hello</li>
          * </ul>
-         * 
+         *
          */
     };
     inputAdd(){
@@ -50,7 +50,7 @@ class Test extends Component {
                     <ul>
                     {
                         items.length?items.map((value)=>{
-                                return <li>{ value}</li>
+                                return  <li>{ value}</li>
                         }):null
                     }
                     </ul>
