@@ -4,7 +4,12 @@ export default class Header extends Component {
     constructor(props) {
         super(props);
         this.state={
-            newTodo:[],
+            newTodo:[
+            {
+                isChecked:true,
+                value:"hello",
+            }
+            ],
             defalutValue:null
         }
         this.inputAdd=this.inputAdd.bind(this)
@@ -29,13 +34,14 @@ export default class Header extends Component {
         if (event.keyCode == 13) {
             this.inputAdd()
         }
+         event.preventDefault();
     }
-
     toogleAll(event){
-        var checked=event.target.type(checked=true);
-        this.setState({
-            newTodo:[].concat(this.state.newTodo(checked))
-        });
+        if(this.state.newTodo.checked(true)){
+            this.setState({
+                 newTodo:[].concat(this.state.newTodo(checked))
+            })
+        }
     }
 
     render() {
@@ -64,7 +70,7 @@ export default class Header extends Component {
                                     <div>
                                      <li>
                                       <input type="checkbox" className="toggle"/>
-                                      <label>{value}</label>
+                                      <label>{value.value}</label>
                                     <button className="destroy">×</button>
                                     </li>
                                     </div>
@@ -76,7 +82,7 @@ export default class Header extends Component {
                     </ul>
                 </div>
                 <div className="fander">
-                    <span className="fander-num"><strong></strong>个项目</span>
+                    <span className="fander-num"><strong>{this.state.newTodo.length}</strong>个项目</span>
                     <div className="fander-btn">
                         <div className="fander-btn-box">
                             <button className="btn one" onClick={this.toogleAll}>所有</button>
