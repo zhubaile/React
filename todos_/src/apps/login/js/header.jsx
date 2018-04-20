@@ -25,7 +25,11 @@ export default class Header extends Component {
     /*合并数组，把input的值给到lable中，然后input的值清空*/
   inputAdd(){
         this.setState({
-            newTodo: [].concat(this.state.newTodo, this.myInput.value),
+            newTodo: [].concat(this.state.newTodo,
+            {
+                isChecked:true,
+                value:this.myInput.value
+            }),
             defalutValue:""
         });
     }
@@ -36,13 +40,6 @@ export default class Header extends Component {
         }
          event.preventDefault();
     }
-    toogleAll(event){
-        if(this.state.newTodo.checked(true)){
-            this.setState({
-                 newTodo:[].concat(this.state.newTodo(checked))
-            })
-        }
-    }
 
     render() {
          var newTodo = this.state.newTodo;
@@ -52,7 +49,7 @@ export default class Header extends Component {
                     <h1>todos</h1>
                     <input className="header-todo"
                     value={this.state.defalutValue}
-                    onKeyDown={this.handleNewTodoKeyDown}
+                    onkeyup={this.handleNewTodoKeyDown}
                     onChange={this.inputChang}
                           ref={(input)=>this.myInput=input}
                            autoFocus={true}
@@ -67,13 +64,11 @@ export default class Header extends Component {
                         newTodo.length?newTodo.map((value)=>{
                         return (
                                 <div>
-                                    <div>
                                      <li>
                                       <input type="checkbox" className="toggle"/>
                                       <label>{value.value}</label>
                                     <button className="destroy">×</button>
                                     </li>
-                                    </div>
                                 </div>
                             )
 
