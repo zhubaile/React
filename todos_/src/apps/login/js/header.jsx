@@ -13,6 +13,7 @@ export default class Header extends Component {
                 }
             ],
             isCheckedAll:false,
+            status:"up",
             defalutValue: null
         }
         this.inputAdd = this.inputAdd.bind(this)
@@ -55,42 +56,26 @@ export default class Header extends Component {
     toogleAll() {
          var newTodoArr=this.state.newTodo;
         this.setState({
-            newTodo:newTodoArr.map(function(v,i){
+            newTodo:newTodoArr.map(function(v,index){
             if(v.isChecked==true){return {isChecked:true,value:v.value}}
             if(v.isChecked==false){return {isChecked:true,value:v.value}}
         })
         });
     }
     toggleUp(){
-        var newTodoArr=this.state.newTodo;
         this.setState({
-            newTodo:newTodoArr.map(function(v,index){
-            if(v.isChecked==true){return v}
-            if(v.isChecked==false){return v}
-                return v;
+            status:"up"
         })
-        });
     }
     toggleActive(){
-         var newTodoArr=this.state.newTodo;
         this.setState({
-            newTodo:newTodoArr.map(function(v,index){
-                return v
+            status:"active"
         })
-        });
     }
     toggleEnd(){
-       var newTodoArr=this.state.newTodo;
         this.setState({
-            newTodo:newTodoArr.map(function(v,index){
-            if(v.isChecked==false)
-            {
-                return v
-            }else{
-                return v
-            }
+            status:"end"
         })
-        });
     }
     clearAll(){
         var newTodoArr=this.state.newTodo;
@@ -154,16 +139,15 @@ export default class Header extends Component {
                             newTodo.length ? newTodo.map((value,index)=>{
                                 //这里还有一个 index 是索引
                                 // 模板里面写判断。所有判断可以这里写。
-                                if (!value.value)return null;
-                                return (
+                                var returnDom=(
                                     <div>
                                         <div>
                                             <li>
                                                 {
                                                     value.isChecked ?
-                                                    (<input type="checkbox" className="toggle" checked onChange={ (e)=>this.checkBoxChange(e,index) }/>)
-                                                    :
-                                                    (<input type="checkbox" className="toggle" onChange={ (e)=>this.checkBoxChange(e,index) }/>)
+                                                        (<input type="checkbox" className="toggle" checked onChange={ (e)=>this.checkBoxChange(e,index) }/>)
+                                                        :
+                                                        (<input type="checkbox" className="toggle" onChange={ (e)=>this.checkBoxChange(e,index) }/>)
                                                 }
                                                 <label className={value.isChecked?"error":""}>{ value.value }</label>
                                                 <button className="destroy" onClick={ () => { this.clickDel(index)}}>×</button>
@@ -171,6 +155,25 @@ export default class Header extends Component {
                                         </div>
                                     </div>
                                 )
+                                if (!value.value)return null;
+                                if(this.state.status=="up"){
+                                    return returnDom
+                                }else if(this.state.status=="active"){
+                                    this.setState({
+                                        newTodo:this.state.newTodo.map(function(v,index){
+                                            if(v.isChecked==false) {return v}
+                                            return v
+                                        })
+                                    });
+                                }else if( this.state.status=="end"){
+                                    this.setState({
+                                        newTodo:this.state.newTodo.map(function(v,index){
+                                            if(v.isChecked==false) {return v}
+                                                return v
+                                        })
+                                    });
+                                };
+                                return (returnDom)
                             }) : null
                         }
                     </ul>
