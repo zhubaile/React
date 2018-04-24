@@ -64,7 +64,7 @@ export default class Header extends Component {
     toggleUp(){
         var newTodoArr=this.state.newTodo;
         this.setState({
-            newTodo:newTodoArr.map(function(v,i){
+            newTodo:newTodoArr.map(function(v,index){
             if(v.isChecked==true){return v}
             if(v.isChecked==false){return v}
                 return v;
@@ -74,8 +74,7 @@ export default class Header extends Component {
     toggleActive(){
          var newTodoArr=this.state.newTodo;
         this.setState({
-            newTodo:newTodoArr.map(function(v,i){
-            if(v.isChecked==true){return v}
+            newTodo:newTodoArr.map(function(v,index){
                 return v
         })
         });
@@ -83,9 +82,13 @@ export default class Header extends Component {
     toggleEnd(){
        var newTodoArr=this.state.newTodo;
         this.setState({
-            newTodo:newTodoArr.map(function(v,i){
-            if(v.isChecked==false){return v}
+            newTodo:newTodoArr.map(function(v,index){
+            if(v.isChecked==false)
+            {
                 return v
+            }else{
+                return v
+            }
         })
         });
     }
