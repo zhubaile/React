@@ -21,7 +21,7 @@ export default class Header extends Component {
         this.handleNewTodoKeyDown = this.handleNewTodoKeyDown.bind(this)
         this.checkBoxChange=this.checkBoxChange.bind(this)
         this.clickDel=this.clickDel.bind(this)
-        this.toogleAll=this.toogleAll.bind(this)
+        this.toggleAll=this.toggleAll.bind(this)
         this.toggleActive=this.toggleActive.bind(this)
         this.toggleEnd=this.toggleEnd.bind(this)
         this.toggleUp=this.toggleUp.bind(this)
@@ -53,19 +53,24 @@ export default class Header extends Component {
         return true
     }
 
-    toogleAll() {
-         var newTodoArr=this.state.newTodo;
+    toggleAll() {
         this.setState({
-            newTodo:newTodoArr.map(function(v,index){
-            if(v.isChecked==true){return {isChecked:true,value:v.value}}
-            if(v.isChecked==false){return {isChecked:true,value:v.value}}
-        })
+          isCheckedAll:!this.state.isCheckedAll,
+            newTodo:this.state.newTodo.map((v)=>{
+                if (this.state.isCheckedAll == false) {
+                    return {isChecked: true, value: v.value}
+                }
+                if (this.state.isCheckedAll == true) {
+                    return {isChecked: false, value: v.value}
+                }
+            })
         });
+        debugger;
     }
     toggleUp(){
         this.setState({
             status:"up"
-        })
+        });
     }
     toggleActive(){
         this.setState({
@@ -131,15 +136,18 @@ export default class Header extends Component {
                         placeholder="What needs to be done?" />
                 </div>
                 <div className="center">
-                    <input
-                        className="center-all"
-                        type="checkbox" onClick={ this.toogleAll } checked={this.state.isCheckedAll?"checked":null}/>
+                    {
+                        this.state.isCheckedAll?
+                            (<input className="center-all" type="checkbox" onChange={ (v)=>this.toggleAll(v) } checked/>)
+                            :
+                            (<input className="center-all" type="checkbox" onChange={(v)=> this.toggleAll(v) }/>)
+                    }
                     <ul>
                         {
                             newTodo.length ? newTodo.map((value,index)=>{
                                 //这里还有一个 index 是索引
                                 // 模板里面写判断。所有判断可以这里写。
-                                var returnDom=(
+                                let returnDom=(
                                     <div>
                                         <div>
                                             <li>
@@ -154,26 +162,19 @@ export default class Header extends Component {
                                             </li>
                                         </div>
                                     </div>
-                                )
+                                );
                                 if (!value.value)return null;
                                 if(this.state.status=="up"){
                                     return returnDom
                                 }else if(this.state.status=="active"){
-                                    this.setState({
-                                        newTodo:this.state.newTodo.map(function(v,index){
-                                            if(v.isChecked==false) {return v}
-                                            return v
-                                        })
-                                    });
+                                    if(value.isChecked==false){
+                                        return returnDom
+                                    }
                                 }else if( this.state.status=="end"){
-                                    this.setState({
-                                        newTodo:this.state.newTodo.map(function(v,index){
-                                            if(v.isChecked==false) {return v}
-                                                return v
-                                        })
-                                    });
-                                };
-                                return (returnDom)
+                                    if(value.isChecked==true){
+                                        return returnDom
+                                    }
+                                }
                             }) : null
                         }
                     </ul>
