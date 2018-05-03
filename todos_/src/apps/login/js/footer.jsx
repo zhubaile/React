@@ -1,6 +1,6 @@
 import React, {Componetn}  from "react";
 
-export default class Content extends Component {
+export default class Footer extends Component {
     constructor(props) {
         super(props);
 
@@ -8,7 +8,7 @@ export default class Content extends Component {
     render(){
         return(
             <div>
-                年的
+                nihao
             </div>
         );
     }

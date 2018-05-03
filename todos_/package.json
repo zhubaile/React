@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/zhanglizhao/lenz-brush#readme",
   "dependencies": {
+    "localdb": "^0.2.12",
     "react": "^16.3.1",
     "react-dom": "^16.3.1"
   }

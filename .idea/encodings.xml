@@ -2,7 +2,12 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/todos_/src/apps/login/index.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/todos_/src/apps/login/js/content.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/todos_/src/apps/login/js/content.jsx" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/todos_/src/apps/login/js/footer.jsx" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/todos_/src/apps/norm/js/footer.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/todos_/src/apps/norm/js/little/main.jsx" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/todos_/src/apps/ooo/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/todos_/src/apps/ooo/js/footer.jsx" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/todos_/src/apps/testOne/iii.js" charset="UTF-8" />
   </component>
 </project>

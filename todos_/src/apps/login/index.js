@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import { render } from 'react-dom';
 import Header from "./js/header";
 import Content from "./js/content";
+import Footer from "./js/footer";
 
 class Aaa extends Component{
     constructor(props){
@@ -12,6 +13,7 @@ class Aaa extends Component{
             <div>
                 <Header></Header>
                 <Content></Content>
+                <Footer></Footer>
             </div>
         )
     }

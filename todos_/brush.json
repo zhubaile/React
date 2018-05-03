@@ -28,6 +28,26 @@
                 "js": "base",
                 "css": "common"
             }
+        },
+        "norm": {
+            "basePath": "./src/apps/norm/",
+            "js": "index.js",
+            "css": "./css/index.css",
+            "html": "index.html",
+            "vendor": {
+                "js": "base",
+                "css": "common"
+            }
+        },
+        "ooo": {
+            "basePath": "./src/apps/ooo/",
+            "js": "index.js",
+            "css": "./css/index.css",
+            "html": "index.html",
+            "vendor": {
+                "js": "base",
+                "css": "common"
+            }
         }
     },
     "vendors": {

@@ -151,12 +151,13 @@ export default class Header extends Component {
                                     <div>
                                         <div>
                                             <li>
+                                                <input type="checkbox" className="toggle" checked={value.isChecked?"":null} onChange={ (e)=>this.checkBoxChange(e,index) }/>
                                                 {
-                                                    value.isChecked ?
-                                                        (<input type="checkbox" className="toggle" checked onChange={ (e)=>this.checkBoxChange(e,index) }/>)
-                                                        :
-                                                        (<input type="checkbox" className="toggle" onChange={ (e)=>this.checkBoxChange(e,index) }/>)
-                                                }
+                                                value.isChecked ?
+                                                    (<input type="checkbox" className="toggle" checked onChange={ (e)=>this.checkBoxChange(e,index) }/>)
+                                                    :
+                                                    (<input type="checkbox" className="toggle" onChange={ (e)=>this.checkBoxChange(e,index) }/>)
+                                            }
                                                 <label className={value.isChecked?"error":""}>{ value.value }</label>
                                                 <button className="destroy" onClick={ () => { this.clickDel(index)}}>×</button>
                                             </li>
