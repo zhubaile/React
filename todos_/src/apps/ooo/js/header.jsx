@@ -3,38 +3,30 @@ import React, { Component } from "react";
 export default class Header extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            newTodo: [
-                {
-                    isChecked: true,
-                    value: "",
-                }
-            ],
-            isCheckedAll:false,
-            status:"up",
-            defalutValue: null
-        }
+        this.state={
+            defalutValue:this.props.value
+        };
+
+        this.handleNewTodoKeyDown=this.handleNewTodoKeyDown.bind(this);
+        this.inputChang=this.inputChang.bind(this);
     };
-    inputChang() {
+    static defaultProps={
+        inputCallback:()=>{}
+    };
+    inputChang(){
         this.setState({
             defalutValue: this.myInput.value
         });
     }
-    inputAdd() {
-        if(!this.myInput.value)return null;
-        this.setState({
-            newTodo: [].concat(this.state.newTodo, {
-                isChecked:false,//改成默认不选中
-                value: this.myInput.value
-            }),
-            defalutValue: ""
-        });
-    }
-    /*键盘回车事件*/
-    handleNewTodoKeyDown(event) {
+    handleNewTodoKeyDown(){
         //先进入到这里了
         if (event.keyCode == 13) {
-            this.inputAdd()
+            if(this.myInput.value){
+                    this.props.inputCallback(this.myInput.value)
+            };
+            this.setState({
+                defalutValue: ''
+            });
         }
         return true
     }
@@ -43,9 +35,9 @@ export default class Header extends Component {
                 <div className="header">
                     <h1>todos</h1>
                     <input className="header-todo"
-                        value={ this.state.defalutValue }
-                        onKeyUp={ this.handleNewTodoKeyDown }
+                        onKeyUp={ this.handleNewTodoKeyDown}
                         onChange={this.inputChang}
+                           value={ this.state.defalutValue }
                         ref={ (input) => this.myInput = input }
                         autoFocus={ true }
                         placeholder="What needs to be done?" />

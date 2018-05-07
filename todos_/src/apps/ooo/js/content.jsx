@@ -3,22 +3,24 @@ import React, {Componetn}  from "react";
 export default class Content extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state={
             newTodo: [
                 {
                     isChecked: true,
                     value: "",
                 }
             ],
-            isCheckedAll:false,
-            status:"up",
-            defalutValue: null
+            isCheckedAll:false
         }
+        this.toggleAll=this.toggleAll.bind(this)
+        this.checkBoxChange=this.checkBoxChange.bind(this)
+        this.clickDel=this.clickDel.bind(this)
     }
+
     toggleAll() {
         this.setState({
             isCheckedAll:!this.state.isCheckedAll,
-            newTodo:this.state.newTodo.map((v)=>{
+            newTodo:this.props.newTodo.map((v)=>{
                 if (this.state.isCheckedAll == false) {
                     return {isChecked: true, value: v.value}
                 }
@@ -27,19 +29,32 @@ export default class Content extends Component {
                 }
             })
         });
+        this.props.inputedback(this.state.newTodo)
     }
-
-    clearAll(){
-        var newTodoArr=this.state.newTodo;
+    checkBoxChange(event,index){
+        var newTodoArr=this.props.newTodo;
         this.setState({
             newTodo:newTodoArr.map(function(v,i){
-                if(v.isChecked==true){return {v:null}}
+                if(i==index){return {isChecked:!v.isChecked,value:v.value}}
+                return v
+            })
+        });
+        this.props.inputedback(this.state.newTodo)
+    }
+    clickDel(index){
+        var newTodoArr=this.props.newTodo;
+        this.setState({
+            newTodo:newTodoArr.map(function(v,i){
+                if(i==index){return {v:null}}
                 return v
             })
         });
     }
+    static defaultProps={
+        inputedback:()=>{}
+    };
     render(){
-        var newTodo = this.state.newTodo;
+        var newTodo = this.props.newTodo;
         return(
             <div className="center">
                 {
@@ -70,13 +85,13 @@ export default class Content extends Component {
                                 </div>
                             );
                             if (!value.value)return null;
-                            if(this.state.status=="up"){
+                            if(this.props.status=="up"){
                                 return returnDom
-                            }else if(this.state.status=="active"){
+                            }else if(this.props.status=="active"){
                                 if(value.isChecked==false){
                                     return returnDom
                                 }
-                            }else if( this.state.status=="end"){
+                            }else if( this.props.status=="end"){
                                 if(value.isChecked==true){
                                     return returnDom
                                 }

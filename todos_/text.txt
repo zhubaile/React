@@ -1,7 +1,7 @@
 rbrush init （下载一个项目文件）
+npm install -g lenz-react-brush  //更新文件
 rbrush connect (启动项目)
 rbrush release （打包项目）
-npm install -g lenz-react-brush  //更新文件
 reactTool connect（用来把es6语法翻译成浏览器认识的命令）
 http://localhost:8890/ngba/login.html
 https://www.npmjs.com/package/lenz-react-brush（一个网址）
