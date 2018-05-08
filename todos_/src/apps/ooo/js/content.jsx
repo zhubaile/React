@@ -4,12 +4,7 @@ export default class Content extends Component {
     constructor(props) {
         super(props);
         this.state={
-            newTodo: [
-                {
-                    isChecked: true,
-                    value: "",
-                }
-            ],
+            newTodo:this.props.newTodo,
             isCheckedAll:false
         }
         this.toggleAll=this.toggleAll.bind(this)
@@ -20,7 +15,7 @@ export default class Content extends Component {
     toggleAll() {
         this.setState({
             isCheckedAll:!this.state.isCheckedAll,
-            newTodo:this.props.newTodo.map((v)=>{
+            newTodo:this.state.newTodo.map((v)=>{
                 if (this.state.isCheckedAll == false) {
                     return {isChecked: true, value: v.value}
                 }
@@ -29,20 +24,20 @@ export default class Content extends Component {
                 }
             })
         });
-        this.props.inputedback(this.state.newTodo)
+        this.state.inputedback(this.state.newTodo)
     }
     checkBoxChange(event,index){
-        var newTodoArr=this.props.newTodo;
+        var newTodoArr=this.state.newTodo;
         this.setState({
             newTodo:newTodoArr.map(function(v,i){
                 if(i==index){return {isChecked:!v.isChecked,value:v.value}}
                 return v
             })
         });
-        this.props.inputedback(this.state.newTodo)
+        this.state.inputedback(this.state.newTodo)
     }
     clickDel(index){
-        var newTodoArr=this.props.newTodo;
+        var newTodoArr=this.state.newTodo;
         this.setState({
             newTodo:newTodoArr.map(function(v,i){
                 if(i==index){return {v:null}}
@@ -54,7 +49,7 @@ export default class Content extends Component {
         inputedback:()=>{}
     };
     render(){
-        var newTodo = this.props.newTodo;
+        var newTodo = this.state.newTodo;
         return(
             <div className="center">
                 {
@@ -65,6 +60,7 @@ export default class Content extends Component {
                 }
                 <ul>
                     {
+
                         newTodo.length ? newTodo.map((value,index)=>{
                             //这里还有一个 index 是索引
                             // 模板里面写判断。所有判断可以这里写。

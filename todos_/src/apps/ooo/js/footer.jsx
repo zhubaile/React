@@ -4,12 +4,7 @@ export default class Footer extends Component {
     constructor(props) {
         super(props);
         this.state={
-            newTodo: [
-                {
-                    isChecked: true,
-                    value: "",
-                }
-            ],
+            newTodo:this.props.newTodo,
             status:"up"
         }
         this.toggleUp=this.toggleUp.bind(this)
