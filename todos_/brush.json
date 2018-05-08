@@ -22,7 +22,7 @@
         "testOne": {
             "basePath": "./src/apps/testOne/",
             "js": "index.jsx",
-            "css": [],
+            "css": ["./css/index.css"],
             "html": "index.html",
             "vendor": {
                 "js": "base",
